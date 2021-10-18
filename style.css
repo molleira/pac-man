@@ -3,6 +3,7 @@ html, body {
   padding: 10;
 }
 
+/* ----- grid ----- */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -15,4 +16,28 @@ html, body {
   width: 15px;
   height: 15px;
   background-color: blue;
+}
+
+/* ----- elements ----- */
+/* 0 */
+.pac-dot {
+  background-color: green;
+  border: 5px solid white;
+  box-sizing: border-box;
+}
+
+/* 1 */
+.wall {
+  background-color: blue;
+}
+
+/* 3 */
+.power-pellet {
+  background-color: green;
+  border-radius: 7.5px;
+}
+
+.pacman {
+  background-color: yellow;
+  border-radius: 7.5px;
 }
