@@ -40,3 +40,19 @@ const layout = [
   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 ]
+
+const squareArr = []
+
+function createBoard() {
+  for (let i = 0; i < layout.length; i++) {
+    // create square
+    const square = document.createElement('div')
+    // put square in grid
+    grid.appendChild(square)
+    // put square in squares array
+    squareArr.push(square)
+  }
+}
+
+createBoard()
+console.log(createBoard)
