@@ -41,7 +41,7 @@ const layout = [
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 ]
 
-const squareArr = []
+let squareArr = []
 
 function createBoard() {
   for (let i = 0; i < layout.length; i++) {
@@ -53,14 +53,16 @@ function createBoard() {
     squareArr.push(square)
     // style squares
     if (layout[i] === 0) {
-      squares[i].classList.add('pac-dot')
+      squareArr[i].classList.add('pac-dot')
     } else if (layout[i] === 1) {
-      squares[i].classList.add('wall')
+      squareArr[i].classList.add('wall')
     } else if (layout[i] === 3) {
-      squares[i].classList.add('power-pellet')
+      squareArr[i].classList.add('power-pellet')
     }
   }
 }
-
 createBoard()
-console.log(createBoard)
+
+// starting position of pac-man
+let pacmanCurrentIndex = 490
+squareArr[pacmanCurrentIndex].classList.add('pacman')
