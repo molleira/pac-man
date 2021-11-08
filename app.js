@@ -68,7 +68,7 @@ let pacmanCurrentIndex = 490
 squareArr[pacmanCurrentIndex].classList.add('pacman')
 
 function control(e) {
-  squares[pacmanCurrentIndex].classList.remove('pacman')
+  squareArr[pacmanCurrentIndex].classList.remove('pacman')
   switch (e.keyCode) {
     case 37:
       console.log('Pressed left')
@@ -76,14 +76,17 @@ function control(e) {
       break
     case 38:
       console.log('Pressed up')
+      if (pacmanCurrentIndex - width >= 0) pacmanCurrentIndex -= width
       break
     case 39:
       console.log('Pressed right')
+      if (pacmanCurrentIndex % width < width - 1) pacmanCurrentIndex += 1
       break
     case 40:
       console.log('Pressed down')
+      if (pacmanCurrentIndex + width < width * width) pacmanCurrentIndex += width
       break
   }
-  squares[pacmanCurrentIndex].classList.add('pacman')
+  squareArr[pacmanCurrentIndex].classList.add('pacman')
 }
 document.addEventListener('keyup', control)
