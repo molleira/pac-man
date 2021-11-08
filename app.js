@@ -72,19 +72,43 @@ function control(e) {
   switch (e.keyCode) {
     case 37:
       console.log('Pressed left')
-      if (pacmanCurrentIndex % width !== 0) pacmanCurrentIndex -= 1
+      if (
+        // check if there is no wall
+        !squareArr[pacmanCurrentIndex - 1].classList.contains('wall') &&
+        // check if there is a border
+        pacmanCurrentIndex % width !== 0)
+        // move pac-man left
+        pacmanCurrentIndex -= 1
       break
     case 38:
       console.log('Pressed up')
-      if (pacmanCurrentIndex - width >= 0) pacmanCurrentIndex -= width
+      if (
+        // check if there is no wall
+        !squareArr[pacmanCurrentIndex - width].classList.contains('wall') &&
+        // check if there is a border
+        pacmanCurrentIndex - width >= 0)
+        // move pac-man up
+        pacmanCurrentIndex -= width
       break
     case 39:
       console.log('Pressed right')
-      if (pacmanCurrentIndex % width < width - 1) pacmanCurrentIndex += 1
+      if (
+        // check if there is no wall
+        !squareArr[pacmanCurrentIndex + 1].classList.contains('wall') &&
+        // check if there is a border
+        pacmanCurrentIndex % width < width - 1)
+        // move pac-man right
+        pacmanCurrentIndex += 1
       break
     case 40:
       console.log('Pressed down')
-      if (pacmanCurrentIndex + width < width * width) pacmanCurrentIndex += width
+      if (
+        // check if there is no wall
+        !squareArr[pacmanCurrentIndex + width].classList.contains('wall') &&
+        // check if there is a border
+        pacmanCurrentIndex + width < width * width)
+        // move pac-man down
+        pacmanCurrentIndex += width
       break
   }
   squareArr[pacmanCurrentIndex].classList.add('pacman')
