@@ -83,6 +83,10 @@ function control(e) {
         pacmanCurrentIndex % width !== 0)
         // move pac-man left
         pacmanCurrentIndex -= 1
+      // move pac-man when in shortcut
+      if (pacmanCurrentIndex === 364) {
+        pacmanCurrentIndex = 391
+      }
       break
     case 38:
       console.log('Pressed up')
@@ -107,6 +111,10 @@ function control(e) {
         pacmanCurrentIndex % width < width - 1)
         // move pac-man right
         pacmanCurrentIndex += 1
+      // move pac-man when in shortcut
+      if (pacmanCurrentIndex === 391) {
+        pacmanCurrentIndex = 364
+      }
       break
     case 40:
       console.log('Pressed down')
