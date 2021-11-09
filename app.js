@@ -56,6 +56,8 @@ function createBoard() {
       squareArr[i].classList.add('pac-dot')
     } else if (layout[i] === 1) {
       squareArr[i].classList.add('wall')
+    } else if (layout[i] === 2) {
+      squareArr[i].classList.add('ghost-lair')
     } else if (layout[i] === 3) {
       squareArr[i].classList.add('power-pellet')
     }
@@ -73,6 +75,8 @@ function control(e) {
     case 37:
       console.log('Pressed left')
       if (
+        // check if there is no ghost-lair
+        !squareArr[pacmanCurrentIndex - 1].classList.contains('ghost-lair') &&
         // check if there is no wall
         !squareArr[pacmanCurrentIndex - 1].classList.contains('wall') &&
         // check if there is a border
@@ -83,6 +87,8 @@ function control(e) {
     case 38:
       console.log('Pressed up')
       if (
+        // check if there is no ghost-lair
+        !squareArr[pacmanCurrentIndex - width].classList.contains('ghost-lair') &&
         // check if there is no wall
         !squareArr[pacmanCurrentIndex - width].classList.contains('wall') &&
         // check if there is a border
@@ -93,6 +99,8 @@ function control(e) {
     case 39:
       console.log('Pressed right')
       if (
+        // check if there is no ghost-lair
+        !squareArr[pacmanCurrentIndex + 1].classList.contains('ghost-lair') &&
         // check if there is no wall
         !squareArr[pacmanCurrentIndex + 1].classList.contains('wall') &&
         // check if there is a border
@@ -103,6 +111,8 @@ function control(e) {
     case 40:
       console.log('Pressed down')
       if (
+        // check if there is no ghost-lair
+        !squareArr[pacmanCurrentIndex + width].classList.contains('ghost-lair') &&
         // check if there is no wall
         !squareArr[pacmanCurrentIndex + width].classList.contains('wall') &&
         // check if there is a border
