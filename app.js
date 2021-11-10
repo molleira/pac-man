@@ -130,5 +130,15 @@ function control(e) {
       break
   }
   squareArr[pacmanCurrentIndex].classList.add('pacman')
+  eatDot()
 }
 document.addEventListener('keyup', control)
+
+// when pac-man eats a pac-dot
+function eatDot() {
+  if (squareArr[pacmanCurrentIndex].classList.contains('pac-dot')) {
+    squareArr[pacmanCurrentIndex].classList.remove('pac-dot')
+    score++
+    scoreDisplay.innerHTML = score
+  }
+}
