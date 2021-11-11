@@ -41,3 +41,24 @@ html, body {
   border-radius: 7.5px;
   border: none;
 }
+
+/* ----- ghosts ----- */
+.blinky {
+  background-color: red;
+  border: none;
+}
+
+.pinky {
+  background-color: pink;
+  border: none;
+}
+
+.inky {
+  background-color: blue;
+  border: none;
+}
+
+.clyde {
+  background-color: orange;
+  border: none;
+}
