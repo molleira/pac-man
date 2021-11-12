@@ -162,5 +162,17 @@ const ghosts = [
   new Ghost('clyde', 379, 500)
 ]
 
-// insert ghosths in the grid
+// insert the ghosths in the grid
 ghosts.forEach(ghost => squareArr[ghost.startIndex].classList.add(ghost.className))
+
+//move the ghosts
+ghosts.forEach(ghost => moveGhost(ghost))
+
+function moveGhost(ghost) {
+  console.log('moved ghost')
+  // array of possible directions
+  const directions = [-1, +1, -width, +width]
+  // apply random direction
+  let direction = directions[Math.floor(Math.random() * directions.length)]
+  console.log(direction)
+}
