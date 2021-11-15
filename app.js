@@ -175,4 +175,13 @@ function moveGhost(ghost) {
   // apply random direction
   let direction = directions[Math.floor(Math.random() * directions.length)]
   console.log(direction)
+  // move ghosts
+  ghost.timerId = setInterval(function () {
+    //remove any ghost
+    squareArr[ghost.currentIndex].classList.remove(ghost.className)
+    // add direction to current Index
+    ghost.currentIndex += direction
+    // add ghost class
+    squareArr[ghost.currentIndex].classList.add(ghost.className)
+  }, ghost.speed)
 }
