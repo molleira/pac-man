@@ -163,7 +163,10 @@ const ghosts = [
 ]
 
 // insert the ghosths in the grid
-ghosts.forEach(ghost => squareArr[ghost.startIndex].classList.add(ghost.className))
+ghosts.forEach(ghost => {
+  squareArr[ghost.startIndex].classList.add(ghost.className)
+  squareArr[ghost.currentIndex].classList.add('ghost')
+})
 
 //move the ghosts
 ghosts.forEach(ghost => moveGhost(ghost))
@@ -177,11 +180,21 @@ function moveGhost(ghost) {
   console.log(direction)
   // move ghosts
   ghost.timerId = setInterval(function () {
-    //remove any ghost
-    squareArr[ghost.currentIndex].classList.remove(ghost.className)
-    // add direction to current Index
-    ghost.currentIndex += direction
-    // add ghost class
-    squareArr[ghost.currentIndex].classList.add(ghost.className)
+    // if next square is not a wall or a ghost
+    if (
+      !squareArr[ghost.currentIndex + direction].classList.contains('wall') &&
+      !squareArr[ghost.currentIndex + direction].classList.contains('ghost')
+    ) {
+      //remove any ghost
+      squareArr[ghost.currentIndex].classList.remove(ghost.className)
+      squareArr[ghost.currentIndex].classList.remove('ghost')
+      // add direction to current Index
+      ghost.currentIndex += direction
+      // add ghost class
+      squareArr[ghost.currentIndex].classList.add(ghost.className)
+      squareArr[ghost.currentIndex].classList.add('ghost')
+    } else {
+      direction = directions[Math.floor(Math.random() * directions.length)]
+    }
   }, ghost.speed)
 }
