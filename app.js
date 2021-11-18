@@ -1,7 +1,10 @@
 const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('#score')
 
-//28 * 28 = 784
+// set initial score
+let score = 0
+
+// 28 * 28 = 784
 const width = 28
 
 // 0 - pac-dots
@@ -131,6 +134,7 @@ function control(e) {
   }
   squareArr[pacmanCurrentIndex].classList.add('pacman')
   eatDot()
+  eatPellet()
 }
 document.addEventListener('keyup', control)
 
@@ -141,6 +145,23 @@ function eatDot() {
     score++
     scoreDisplay.innerHTML = score
   }
+}
+
+// when pac-man eats a power-pellet
+function eatPellet() {
+  // if square pacman is in contains a power pellet
+  if (squareArr[pacmanCurrentIndex].classList.contains('power-pellet')) {
+    // add a score of 10
+    score += 10
+    // change each of the four ghosts to isScared
+    ghosts.forEach(ghost => ghost.isScared = true)
+    // use setTimeout to unscare ghosts after 10 seconds     
+    setTimeout(unScareGhosts, 10000)
+  }
+}
+
+function unScareGhosts() {
+  ghosts.forEach(ghost => ghost.isScared = false)
 }
 
 // define ghosts
