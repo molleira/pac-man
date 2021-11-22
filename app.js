@@ -151,6 +151,8 @@ function eatDot() {
 function eatPellet() {
   // if square pacman is in contains a power pellet
   if (squareArr[pacmanCurrentIndex].classList.contains('power-pellet')) {
+    // remove class of power-pellet from square
+    squareArr[pacmanCurrentIndex].classList.remove('power-pellet')
     // add a score of 10
     score += 10
     // change each of the four ghosts to isScared
@@ -208,7 +210,7 @@ function moveGhost(ghost) {
     ) {
       //remove any ghost
       squareArr[ghost.currentIndex].classList.remove(ghost.className)
-      squareArr[ghost.currentIndex].classList.remove('ghost')
+      squareArr[ghost.currentIndex].classList.remove('ghost', 'scared-ghost')
       // add direction to current Index
       ghost.currentIndex += direction
       // add ghost class
@@ -216,6 +218,10 @@ function moveGhost(ghost) {
       squareArr[ghost.currentIndex].classList.add('ghost')
     } else {
       direction = directions[Math.floor(Math.random() * directions.length)]
+    }
+    //if the ghost is currently scared
+    if (ghost.isScared) {
+      squareArr[ghost.currentIndex].classList.add('scared-ghost')
     }
   }, ghost.speed)
 }
