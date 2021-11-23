@@ -208,7 +208,7 @@ function moveGhost(ghost) {
       !squareArr[ghost.currentIndex + direction].classList.contains('wall') &&
       !squareArr[ghost.currentIndex + direction].classList.contains('ghost')
     ) {
-      //remove any ghost
+      // remove any ghost
       squareArr[ghost.currentIndex].classList.remove(ghost.className)
       squareArr[ghost.currentIndex].classList.remove('ghost', 'scared-ghost')
       // add direction to current Index
@@ -219,9 +219,20 @@ function moveGhost(ghost) {
     } else {
       direction = directions[Math.floor(Math.random() * directions.length)]
     }
-    //if the ghost is currently scared
+    // if the ghost is currently scared
     if (ghost.isScared) {
       squareArr[ghost.currentIndex].classList.add('scared-ghost')
+    }
+    // if the ghost is currently scared and pacman eats it
+    if (ghost.isScared && squareArr[ghost.currentIndex].classList.contains('pacman')) {
+      // remove classnames ghost.className, 'ghost' and 'scared-ghost'
+      squareArr[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost')
+      // change ghosts currentIndex back to its startIndex
+      ghost.currentIndex = ghost.startIndex
+      // add a score of 100
+      score += 100
+      // re-add classnames of ghost.className and 'ghost' to the ghosts new postion
+      squareArr[ghost.currentIndex].classList.add(ghost.className, 'ghost')
     }
   }, ghost.speed)
 }
