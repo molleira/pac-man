@@ -191,7 +191,7 @@ ghosts.forEach(ghost => {
   squareArr[ghost.currentIndex].classList.add('ghost')
 })
 
-//move the ghosts
+// move the ghosts
 ghosts.forEach(ghost => moveGhost(ghost))
 
 function moveGhost(ghost) {
@@ -234,5 +234,22 @@ function moveGhost(ghost) {
       // re-add classnames of ghost.className and 'ghost' to the ghosts new postion
       squareArr[ghost.currentIndex].classList.add(ghost.className, 'ghost')
     }
+    checkGameOver()
   }, ghost.speed)
+}
+
+// check for game over
+function checkGameOver() {
+  // if the square pac-man is in contains a ghost and the square does not contain a scared ghost
+  if (
+    squareArr[pacmanCurrentIndex].classList.contains('ghost') &&
+    !squareArr[pacmanCurrentIndex].classList.contains('scared-ghost')
+  ) {
+    // for each ghost stop it moving
+    ghosts.forEach(ghost => clearInterval(ghost.timerId))
+    // remove eventlistener from control function
+    document.removeEventListener('keyup', control)
+    // tell user the game is over
+    scoreDisplay.innerHTML = 'You LOSE'
+  }
 }
