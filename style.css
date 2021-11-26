@@ -7,14 +7,14 @@ html, body {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  width: 420px;
-  height: 420px;
+  width: 560px;
+  height: 560px;
   border: solid black;
 }
 
 .grid div {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
 }
 
 /* ----- elements ----- */
@@ -33,13 +33,12 @@ html, body {
 /* 3 */
 .power-pellet {
   background-color: green;
-  border-radius: 7.5px;
+  border-radius: 10px;
 }
 
-.pacman {
+.pac-man {
   background-color: orange;
-  border-radius: 7.5px;
-  border: none;
+  border-radius: 10px;
 }
 
 /* ----- ghosts ----- */
@@ -49,21 +48,21 @@ html, body {
 }
 
 .pinky {
-  background-color: pink;
+  background-color: lightsalmon;
   border: none;
 }
 
 .inky {
-  background-color: aqua;
+  background-color: brown;
   border: none;
 }
 
 .clyde {
-  background-color: orange;
+  background-color: lightcoral;
   border: none;
 }
 
 .scared-ghost {
-  background-color: aquamarine;
+  background-color: blueviolet;
   border: none;
 }
